@@ -8,7 +8,7 @@ public class JenkinsExampleTest {
         int a = 6, b = 8, result, anotherResult = 10;
         result = a + b;
 
-        Assertions.assertNotEquals(result, anotherResult);
+        Assertions.assertEquals(result, anotherResult);
     }
 }
 
