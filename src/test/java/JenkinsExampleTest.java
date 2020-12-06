@@ -1,17 +1,14 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class JenkinsExampleTest {
+
     @Test
-    void helloJenkins() {
-        String str1 = "jenkins";
-        String str2 = "JENKINS";
+    void jenkinsTest(){
+        int a = 6, b = 8, result, anotherResult = 10;
+        result = a + b;
 
-        System.out.println(str1.equalsIgnoreCase(str2));
-
-
-
+        Assertions.assertNotEquals(result, anotherResult);
     }
-
 }
-
 
