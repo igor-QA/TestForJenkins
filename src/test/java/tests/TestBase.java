@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.AttachmentsHelper.*;
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
 
 public class TestBase {
 
@@ -24,7 +25,7 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
         Configuration.startMaximized = true;
-        Configuration.browser = "firefox";
+        //Configuration.browser = FIREFOX;
     }
 
 
@@ -35,8 +36,8 @@ public class TestBase {
             attachScreenshot("Last screenshot");
             attachPageSource();
             attachAsText("Browser console logs", getConsoleLogs());
-            attachVideo();
 
+            attachVideo();
 
             closeWebDriver();
         }

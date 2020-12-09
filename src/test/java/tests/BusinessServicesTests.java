@@ -26,7 +26,7 @@ public class BusinessServicesTests extends TestBase {
         step("Перейти во вклад Успех",()->
                 $(byText("Успех")).click());
 
-        step("Проверить успешность открытия вкадки", () ->
+        step("Проверить успешность открытия страницы Вклада", () ->
                 $("body").shouldHave(text("Условия")));
     }
 }
