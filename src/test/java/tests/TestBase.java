@@ -10,7 +10,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.AttachmentsHelper.*;
-import static org.openqa.selenium.remote.BrowserType.FIREFOX;
 
 public class TestBase {
 
@@ -18,12 +17,15 @@ public class TestBase {
     static void setup() {
         addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
 
+        String url = System.getProperty("remote.browser.url");
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
+        Configuration.remote = "https://user1:1234@" + System.getProperty("remote.browser.url") + ":4444/wd/hub/";
         Configuration.startMaximized = true;
         //Configuration.browser = FIREFOX;
     }
@@ -36,7 +38,6 @@ public class TestBase {
             attachScreenshot("Last screenshot");
             attachPageSource();
             attachAsText("Browser console logs", getConsoleLogs());
-
             attachVideo();
 
             closeWebDriver();
