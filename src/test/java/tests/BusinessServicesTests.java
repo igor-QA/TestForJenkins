@@ -10,7 +10,7 @@ import static io.qameta.allure.Allure.step;
 public class BusinessServicesTests extends TestBase {
 
     @Test
-    @DisplayName("Проверить работу страницы, тарифы для Малого бизнеса и ИП")
+    @DisplayName("Проверить раздел Тарифы МСБ")
     void  successfulOpenTariffPage() {
         step("Open Base Page", () ->
                 open("https://sovcombank.ru/business"));
@@ -27,7 +27,7 @@ public class BusinessServicesTests extends TestBase {
                 $(byText("Успех")).click());
 
         step("Проверить успешность открытия страницы Вклада", () ->
-                $("body").shouldHave(text("Условия")));
+                $("h2.Typography").shouldHave(text("Условия")));
     }
 }
 
