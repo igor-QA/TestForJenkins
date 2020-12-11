@@ -23,6 +23,7 @@ allure {
     version = "${allureVersion}"
     autoconfigure = true
     aspectjweaver = true
+
     useJUnit5 {
         version = "${allureVersion}"
     }
@@ -34,6 +35,8 @@ dependencies {
     testImplementation "io.qameta.allure:allure-selenide:${allureVersion}"
     testImplementation "com.github.javafaker:javafaker:1.0.2"
     testImplementation "ch.qos.logback:logback-classic:1.2.3"
+    compile'org.aeonbits.owner:owner:1.0.12'
+
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
@@ -43,7 +46,10 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.withType(Test) {
     systemProperties = System.properties
     useJUnitPlatform()
 }
+
+   
+

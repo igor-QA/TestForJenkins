@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import helpers.ConfigHelper;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -20,17 +21,16 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
+        Configuration.remote = ConfigHelper.getURL();
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         //Configuration.browser = FIREFOX;
-        //Configuration.remote = System.getProperty("remote.browser.url");//TODO Сделать проперти
     }
 
     @AfterEach
     @Step("Attachments")
 
-        public void afterEach(){
+        public void afterEach () {
             attachScreenshot("Last screenshot");
             attachPageSource();
             attachAsText("Browser console logs", getConsoleLogs());
@@ -38,9 +38,7 @@ public class TestBase {
 
             closeWebDriver();
         }
- }
-
-
+}
 
 
 
