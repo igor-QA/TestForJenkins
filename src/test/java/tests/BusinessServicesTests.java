@@ -12,7 +12,7 @@ public class BusinessServicesTests extends TestBase {
     @Test
     @DisplayName("Проверить раздел Тарифы МСБ")
     void  successfulOpenTariffPage() {
-        step("Открытие главной страницы", () ->
+        step("Открыть главную страницу", () ->
                 open("https://sovcombank.ru/business"));
                 $(".CookieOffer__buttons").click();
 
@@ -32,7 +32,7 @@ public class BusinessServicesTests extends TestBase {
     @Test
     @DisplayName("Проверить раздел Тарифа МСБ - Негативный сценарий")
     void unsuccessfulOpenTariffPage() {
-        step("Открытие главной страницы", () ->
+        step("Открыть главную страницу", () ->
                 open("https://sovcombank.ru/business"));
         $(".CookieOffer__buttons").click();
 
@@ -43,7 +43,7 @@ public class BusinessServicesTests extends TestBase {
         step("Проверить наличие на страницы вкладов", () ->
                 $("html").findAll("span.Products__item__inner").shouldHaveSize(4));
 
-        step("Перейти во вклад Успех",()->
+        step("Перейти во вклад Доходный",()->
                 $(byText("Доходный")).click());
 
         step("Проверить успешность открытия страницы Вклада", () ->
