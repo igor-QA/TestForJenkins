@@ -7,7 +7,7 @@ import org.aeonbits.owner.Config;
     @Config.Sources({
             "system:properties",
             "classpath:${environment}.properties",
-            "file:~/${env}.properties"
+            "file:~/project.properties"
     })
 
     public interface WebConfig extends Config {

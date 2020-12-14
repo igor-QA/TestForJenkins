@@ -37,9 +37,11 @@ dependencies {
     testImplementation "ch.qos.logback:logback-classic:1.2.3"
     compile'org.aeonbits.owner:owner:1.0.12'
 
-
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+// Подключаем зависимость для телеграм бота
+    compile group: 'org.knowm.xchart', name: 'xchart', version: '3.5.2'
+    compile group: 'org.telegram', name: 'telegrambots', version: '4.1'
 }
 
 tasks.withType(JavaCompile) {
@@ -49,8 +51,22 @@ tasks.withType(Test) {
     systemProperties = System.properties
 }
 test {
+    systemProperty "chromeoptions.args","--disable-notifications" //увидомления выкл
     useJUnitPlatform()
 }
+// Подключаем зависимость для телеграм бота
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'piechart.telegram.PieChartToTelegram'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
 
 
 
