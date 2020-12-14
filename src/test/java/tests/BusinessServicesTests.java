@@ -47,7 +47,7 @@ public class BusinessServicesTests extends TestBase {
                 $(byText("Доходный")).click());
 
         step("Проверить успешность открытия страницы Вклада", () ->
-                $("h1.Typography").shouldHave(text("ДОХОД"))); //ДОХОДНЫЙ
+                $("h1.Typography").shouldHave(text("Успех"))); //ДОХОДНЫЙ
 
     }
 }
