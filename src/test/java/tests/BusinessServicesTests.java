@@ -10,14 +10,14 @@ import static io.qameta.allure.Allure.step;
 public class BusinessServicesTests extends TestBase {
 
     @Test
-    @DisplayName("Проверить раздел Тарифы МСБ")
+    @DisplayName("Проверить раздел Тарифы МСБ - Вклад Успех")
     void  successfulOpenTariffPage() {
         step("Открыть главную страницу", () ->
                 open("https://sovcombank.ru/business"));
                 $(".CookieOffer__buttons").click();
 
         step("Перейти на страницу 'Подобрать тариф  для бизнеса' ", () ->
-                $x("//*[@id='__next']/div/main/section[1]/div/a[2]").click());
+                $("#__next a:nth-child(2) h4").click());
                 switchTo().window(1);
 
         step("Проверить наличие на страницы вкладов", () ->
@@ -30,14 +30,14 @@ public class BusinessServicesTests extends TestBase {
                 $("h2.Typography").shouldHave(text("Условия")));
     }
     @Test
-    @DisplayName("Проверить раздел Тарифа МСБ - Негативный сценарий")
+    @DisplayName("Проверить раздел Тарифа МСБ - Вклад Доходный")
     void unsuccessfulOpenTariffPage() {
         step("Открыть главную страницу", () ->
                 open("https://sovcombank.ru/business"));
         $(".CookieOffer__buttons").click();
 
         step("Перейти на страницу 'Подобрать тариф  для бизнеса' ", () ->
-                $x("//*[@id='__next']/div/main/section[1]/div/a[2]").click());
+                $("#__next a:nth-child(2) h4").click());
         switchTo().window(1);
 
         step("Проверить наличие на страницы вкладов", () ->
