@@ -37,7 +37,6 @@ dependencies {
     testImplementation "ch.qos.logback:logback-classic:1.2.3"
     testImplementation "org.aeonbits.owner:owner:1.0.12"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
